@@ -1,0 +1,59 @@
+{
+  "name": "react-abc-modal",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A React modal as simple as ABC",
+  "tags": [
+    "react",
+    "modal"
+  ],
+  "keywords": [
+    "react",
+    "modal",
+    "react-component",
+    "es6",
+    "simple",
+    "easy"
+  ],
+  "author": {
+    "name": "Claire Lavigne",
+    "email": "lavigneclaire81@gmail.com"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Claire-Lavigne/react-abc-modal.git"
+  },
+  "bugs": "https://github.com/Claire-Lavigne/react-abc-modal/issues",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.0"
+  }
+}
