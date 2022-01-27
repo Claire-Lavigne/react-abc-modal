@@ -1,16 +1,18 @@
 # react-abc-modal
 
-[NPM](https://www.npmjs.com/package/react-abc-modal)
+[NPM](https://www.npmjs.com/package/react-abc-modal)  
+[Yarn](https://yarnpkg.com/package/react-abc-modal)
 
 A react modal as simple as ABC.
 
 - Customize the modal as you wish
 - Contributions welcome!
 
-## Download
+## Download with NPM or Yarn
 
 ```bash
 npm i react-abc-modal
+yarn add react-abc-modal
 ```
 
 ## How to use it
