@@ -16,7 +16,12 @@ const App = () => {
   return (
     <>
       <button onClick={openModal}>Open modal</button>
-      <Modal isOpen={isOpen} onClose={closeModal} closeOutside={true}>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        closeOutside={true}
+        icon={true}
+      >
         <h1>TEST</h1>
       </Modal>
     </>

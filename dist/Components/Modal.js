@@ -23,35 +23,53 @@ const Modal = _ref => {
   let {
     children,
     isOpen,
-    onClose,
-    closeOutside
+    icon,
+    closeModal,
+    closeOutside,
+    classOverlay,
+    classSection,
+    classIconClose,
+    styleOverlay,
+    styleSection,
+    styleIconClose
   } = _ref;
   const myRef = (0, _react.useRef)();
 
   const handleClickOutside = e => {
-    if (!myRef.current.contains(e.target)) {
-      onClose();
+    if (closeOutside && !myRef.current.contains(e.target)) {
+      closeModal();
+    }
+  };
+
+  const handleEscape = e => {
+    if (e.key === "Escape" || e.key === "Esc") {
+      closeModal();
     }
   };
 
   (0, _react.useEffect)(() => {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
     };
   });
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "".concat(_ModalModule.default.overlay, " ").concat(isOpen ? _ModalModule.default.show : _ModalModule.default.hide)
+    className: "".concat(_ModalModule.default.overlay, " ").concat(isOpen ? _ModalModule.default.show : _ModalModule.default.hide, " ").concat(classOverlay !== null && classOverlay !== void 0 ? classOverlay : null),
+    style: styleOverlay !== null && styleOverlay !== void 0 ? styleOverlay : null
   }, /*#__PURE__*/_react.default.createElement("section", {
-    className: "".concat(_ModalModule.default.content),
-    ref: closeOutside && myRef
-  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "".concat(_ModalModule.default.content, " ").concat(classSection !== null && classSection !== void 0 ? classSection : null),
+    ref: closeOutside ? myRef : null,
+    style: styleSection !== null && styleSection !== void 0 ? styleSection : null
+  }, icon && /*#__PURE__*/_react.default.createElement("img", {
     src: _close.default,
     alt: "close modal",
-    className: "".concat(_ModalModule.default.close),
-    onClick: onClose
+    className: "".concat(_ModalModule.default.close, " ").concat(classIconClose !== null && classIconClose !== void 0 ? classIconClose : null),
+    style: styleIconClose !== null && styleIconClose !== void 0 ? styleIconClose : null,
+    onClick: closeModal
   }), children));
 };
 
