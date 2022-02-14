@@ -8,6 +8,8 @@ A react modal as simple as ABC.
 - Customize the modal as you wish
 - The modal can be closed with the "Escape" key, overlay and icon click/touch
 
+<img src="https://github.com/Claire-Lavigne/repo-images/blob/main/React-abc-modal.JPG" width="60%">  
+
 **About**
 
 - This project was created as part of my OpenClassrooms apprenticeship as a JavaScript React developer
