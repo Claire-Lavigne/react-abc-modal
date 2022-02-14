@@ -22,7 +22,7 @@ const App = () => {
         closeOutside={true}
         icon={true}
       >
-        <h1>TEST</h1>
+        <h1>This is a customizable React Modal</h1>
       </Modal>
     </>
   );
