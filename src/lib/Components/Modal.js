@@ -4,9 +4,9 @@ import styles from "./Modal.module.css";
 
 const Modal = ({
   children,
-  isOpen,
   icon,
-  closeModal,
+  isOpen,
+  setOpen,
   closeOutside,
   classOverlay,
   classSection,
@@ -18,24 +18,22 @@ const Modal = ({
   const myRef = useRef();
 
   const handleClickOutside = (e) => {
-    if (closeOutside && !myRef.current.contains(e.target)) {
-      closeModal();
+    if (isOpen && closeOutside && !myRef.current.contains(e.target)) {
+      setOpen(false);
     }
   };
 
   const handleEscape = (e) => {
-    if (e.key === "Escape" || e.key === "Esc") {
-      closeModal();
+    if ((isOpen && e.key === "Escape") || e.key === "Esc") {
+      setOpen(false);
     }
   };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
   });
@@ -58,7 +56,7 @@ const Modal = ({
             alt="close modal"
             className={`${styles.close} ${classIconClose ?? null}`}
             style={styleIconClose ?? null}
-            onClick={closeModal}
+            onClick={() => setOpen(false)}
           />
         )}
         {children}

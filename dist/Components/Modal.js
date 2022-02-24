@@ -22,9 +22,9 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 const Modal = _ref => {
   let {
     children,
-    isOpen,
     icon,
-    closeModal,
+    isOpen,
+    setOpen,
     closeOutside,
     classOverlay,
     classSection,
@@ -36,24 +36,22 @@ const Modal = _ref => {
   const myRef = (0, _react.useRef)();
 
   const handleClickOutside = e => {
-    if (closeOutside && !myRef.current.contains(e.target)) {
-      closeModal();
+    if (isOpen && closeOutside && !myRef.current.contains(e.target)) {
+      setOpen(false);
     }
   };
 
   const handleEscape = e => {
-    if (e.key === "Escape" || e.key === "Esc") {
-      closeModal();
+    if (isOpen && e.key === "Escape" || e.key === "Esc") {
+      setOpen(false);
     }
   };
 
   (0, _react.useEffect)(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
   });
@@ -69,7 +67,7 @@ const Modal = _ref => {
     alt: "close modal",
     className: "".concat(_ModalModule.default.close, " ").concat(classIconClose !== null && classIconClose !== void 0 ? classIconClose : null),
     style: styleIconClose !== null && styleIconClose !== void 0 ? styleIconClose : null,
-    onClick: closeModal
+    onClick: () => setOpen(false)
   }), children));
 };
 

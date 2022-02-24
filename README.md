@@ -6,7 +6,10 @@
 A react modal as simple as ABC.
 
 - Customize the modal as you wish
-- The modal can be closed with the "Escape" key, overlay and icon click/touch
+- The modal can be closed with :
+  - "Escape" key,
+  - overlay click/touch (optional)
+  - icon click/touch (optional)
 
 <img src="https://github.com/Claire-Lavigne/repo-images/blob/main/React-abc-modal.JPG" width="60%">
 
@@ -33,27 +36,13 @@ import Modal from "react-abc-modal";
 const yourComponent = () => {
   const [isOpen, setOpen] = useState(false);
 
-  // The function to open the Modal
-  const openModal = () => {
-    setOpen(true);
-  };
-
-  // The function to close the Modal
-  const closeModal = () => {
-    setOpen(false);
-  };
-
   return (
     <>
-      {/* A component (for example) to call the function openModal */}
-      <button onClick={openModal}>Open modal</button>
+      {/* Example to open Modal on click */}
+      <button onClick={() => setOpen(true)}>Open modal</button>
+
       {/* Your Modal and its children */}
-      <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        closeOutside={true}
-        icon={true}
-      >
+      <Modal isOpen={isOpen} setOpen={setOpen} closeOutside={true} icon={true}>
         <h1>Write anything inside!</h1>
       </Modal>
     </>
@@ -84,7 +73,7 @@ return (
     {/* All existing props */}
     <Modal
       isOpen={isOpen}
-      closeModal={closeModal}
+      setOpen={setOpen}
       closeOutside={true}
       icon={true}
       classOverlay="myOverlayClass"
@@ -95,6 +84,8 @@ return (
       styleIconClose={styleIconClose}
     >
       <p>Add any tag here</p>
+      {/* If you want to use your own component to close the Modal on click */}
+      <p onClick={() => setOpen(false)}>Click me!</p>
     </Modal>
   </>
 );
@@ -103,9 +94,9 @@ return (
 ## About the props
 
 - `isOpen` : Compulsory to get the current state
-- `icon` : A boolean to set to true if you want to use our Icon svg
-- `closeModal` : Compulsory to update the state
+- `setOpen` : Compulsory to update the state
 - `closeOutside` : A boolean to set to true if you want to close the modal when the user clicks the overlay
+- `icon` : A boolean to set to true if you want to use our Icon svg
 - `classOverlay` : A string to add your custom class for the Overlay component
 - `classSection` : A string to add your custom class for the Main component
 - `classIconClose` : A string to add your custom class for the Icon Close component
