@@ -8,7 +8,7 @@ A react modal as simple as ABC.
 - Customize the modal as you wish
 - The modal can be closed with the "Escape" key, overlay and icon click/touch
 
-<img src="https://github.com/Claire-Lavigne/repo-images/blob/main/React-abc-modal.JPG" width="60%">  
+<img src="https://github.com/Claire-Lavigne/repo-images/blob/main/React-abc-modal.JPG" width="60%">
 
 **About**
 
@@ -48,7 +48,12 @@ const yourComponent = () => {
       {/* A component (for example) to call the function openModal */}
       <button onClick={openModal}>Open modal</button>
       {/* Your Modal and its children */}
-      <Modal isOpen={isOpen} closeModal={closeModal}>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        closeOutside={true}
+        icon={true}
+      >
         <h1>Write anything inside!</h1>
       </Modal>
     </>
