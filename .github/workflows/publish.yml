@@ -1,0 +1,40 @@
+name: CI & Release
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+      # Update npm to support Trusted Publishing
+      - run: npm install -g npm@latest
+      - run: npm ci
+      - run: npm run build
+      # No NODE_AUTH_TOKEN, OIDC will be used automatically
+      - run: npm publish

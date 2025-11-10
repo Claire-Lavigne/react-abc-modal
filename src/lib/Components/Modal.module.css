@@ -1,35 +1,60 @@
+:root {
+  --abc-modal-overlay-bg: rgba(0, 0, 0, 0.65);
+  --abc-modal-bg: #fff;
+  --abc-modal-border: 1px solid #4b4b4b;
+  --abc-modal-radius: 10px;
+  --abc-modal-padding: 1rem;
+  --abc-modal-animation: all 0.3s ease;
+}
+
+/* Overlay */
 .overlay {
   position: fixed;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  inset: 0;
+  z-index: 999;
+  background: var(--abc-modal-overlay-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--abc-modal-animation);
 }
-.show {
-  display: block;
+
+/* When modal is open (you can add class via state) */
+.overlay[data-open="true"] .content {
+  transform: translateY(0);
+  opacity: 1;
 }
-.hide {
-  display: none;
-}
+
+/* Modal content */
 .content {
-  position: absolute;
-  background: white;
-  border: 1px solid rgb(75, 75, 75);
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 15px 20px;
-  overflow: auto;
+  background: var(--abc-modal-bg);
+  border: var(--abc-modal-border);
+  border-radius: var(--abc-modal-radius);
+  padding: var(--abc-modal-padding);
+  width: clamp(280px, 75vw, 560px);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: var(--abc-modal-animation);
 }
+
+/* Close button */
 .close {
   position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
   cursor: pointer;
-  top: 10px;
-  right: 10px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: var(--abc-modal-animation);
+}
+
+.close:hover {
+  opacity: 0.7;
 }

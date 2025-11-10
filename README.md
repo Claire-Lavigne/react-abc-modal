@@ -1,36 +1,47 @@
 # react-abc-modal
 
-[NPM](https://www.npmjs.com/package/react-abc-modal)  
-[Yarn](https://yarnpkg.com/package/react-abc-modal)
+A react modal as simple as ABC — lightweight, accessible, and fully customizable.  
 
-A react modal as simple as ABC.
+[![npm version](https://img.shields.io/npm/v/react-abc-modal?color=brightgreen)](https://www.npmjs.com/package/react-abc-modal)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![build](https://github.com/Claire-Lavigne/react-abc-modal/actions/workflows/release.yml/badge.svg)](https://github.com/Claire-Lavigne/react-abc-modal/actions)
 
-- Customize the modal as you wish
-- The modal can be closed with :
-  - "Escape" key,
-  - overlay click/touch (optional)
-  - icon click/touch (optional)
+## Features
+- Fully customizable via props and classes
+- Responsive
+- Keyboard and screen-reader friendly
+- The modal can be closed via:
+  - **Escape** key
+  - **Overlay click** *(optional)*
+  - **Close icon** *(optional)*
+- Written in TypeScript
+- No external dependencies (only React)
 
 <img src="https://github.com/Claire-Lavigne/repo-images/blob/main/React-abc-modal.JPG" width="60%">
 
-**About**
+## Stack 
 
-- This project was created as part of my OpenClassrooms apprenticeship as a JavaScript React developer
-- Any contributions are welcome!
+- React 18+
+- TypeScript + TSX
+- Babel for build
+- Vite for playground
+- GitHub Actions for CI/CD
 
-## Download with NPM or Yarn
+## Installation
 
 ```bash
-npm i react-abc-modal
+npm install react-abc-modal
+# or
 yarn add react-abc-modal
 ```
 
-## How to use it
+**Links**: [NPM package](https://www.npmjs.com/package/react-abc-modal) and 
+[Yarn package](https://yarnpkg.com/package/react-abc-modal)
 
-### What is necessary
+## Quick start
 
 ```js
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-abc-modal";
 
 const yourComponent = () => {
@@ -38,12 +49,11 @@ const yourComponent = () => {
 
   return (
     <>
-      {/* Example to open Modal on click */}
       <button onClick={() => setOpen(true)}>Open modal</button>
 
-      {/* Your Modal and its children */}
-      <Modal isOpen={isOpen} setOpen={setOpen} closeOutside={true} icon={true}>
-        <h1>Write anything inside!</h1>
+      <Modal isOpen={isOpen} setOpen={setOpen} closeOutside icon>
+        <h1>Hello from react-abc-modal</h1>
+        <p>Press Escape or click outside to close.</p>
       </Modal>
     </>
   );
@@ -51,55 +61,16 @@ const yourComponent = () => {
 
 export default yourComponent;
 ```
+Supports any children: text, forms, images, or even other React components.
 
-### What can be customized
+## Props Reference
 
-```js
-{
-  /* The variables to set your custom inline css */
-}
-const styleOverlay = {
-  backgroundColor: "red",
-};
-const styleSection = {
-  backgroundColor: "blue",
-};
-const styleIconClose = {
-  backgroundColor: "yellow",
-};
-
-return (
-  <>
-    {/* All existing props */}
-    <Modal
-      isOpen={isOpen}
-      setOpen={setOpen}
-      closeOutside={true}
-      icon={true}
-      classOverlay="myOverlayClass"
-      classSection="mySectionClass"
-      classIconClose="myIconCloseClass"
-      styleOverlay={styleOverlay}
-      styleSection={styleSection}
-      styleIconClose={styleIconClose}
-    >
-      <p>Add any tag here</p>
-      {/* If you want to use your own component to close the Modal on click */}
-      <p onClick={() => setOpen(false)}>Click me!</p>
-    </Modal>
-  </>
-);
-```
-
-## About the props
-
-- `isOpen` : Compulsory to get the current state
-- `setOpen` : Compulsory to update the state
-- `closeOutside` : A boolean to set to true if you want to close the modal when the user clicks the overlay
-- `icon` : A boolean to set to true if you want to use our Icon svg
-- `classOverlay` : A string to add your custom class for the Overlay component
-- `classSection` : A string to add your custom class for the Main component
-- `classIconClose` : A string to add your custom class for the Icon Close component
-- `styleOverlay` : A variable to add your custom inline style for the Overlay Close component
-- `styleSection` : A variable to add your custom inline style for the Main Close component
-- `styleIconClose` : A variable to add your custom inline style for the Icon Close component
+| Prop             | Type                      | Required | Default          | Description                         |
+| ---------------- | ------------------------- | -------- | ---------------- | ----------------------------------- |
+| `isOpen`         | `boolean`                 | ✅        | –                | Controls modal visibility           |
+| `setOpen`        | `(open: boolean) => void` | ✅        | –                | Updates modal open state            |
+| `closeOutside`   | `boolean`                 | ❌        | `true`           | Close modal when clicking overlay   |
+| `icon`           | `boolean`                 | ❌        | `true`           | Show default close icon             |
+| `classOverlay`   | `string`                  | ❌        | –                | Custom CSS class for overlay        |
+| `classSection`   | `string`                  | ❌        | –                | Custom CSS class for modal content  |
+| `classIconClose` | `string`                  | ❌        | –                | Custom CSS class for close icon     |

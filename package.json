@@ -1,11 +1,13 @@
 {
   "name": "react-abc-modal",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "private": false,
   "description": "A React modal as simple as ABC",
   "tags": [
     "react",
-    "modal"
+    "modal",
+    "typescript",
+    "accessibility"
   ],
   "keywords": [
     "react",
@@ -13,27 +15,34 @@
     "react-component",
     "es6",
     "simple",
-    "easy"
+    "easy",
+    "typescript",
+    "accessibility",
+    "ABC"
   ],
-  "author": {
-    "name": "Claire Lavigne",
-    "email": "lavigneclaire81@gmail.com"
-  },
+  "author": "Claire Lavigne <lavigneclaire81@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "README.md"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Claire-Lavigne/react-abc-modal.git"
+    "url": "git+https://github.com/Claire-Lavigne/react-abc-modal.git"
   },
-  "bugs": "https://github.com/Claire-Lavigne/react-abc-modal/issues",
+  "bugs": {
+    "url": "https://github.com/Claire-Lavigne/react-abc-modal/issues"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"
+    "clean": "rimraf dist",
+    "build:types": "tsc --project tsconfig.json",
+    "build:js": "babel src/lib --extensions \".ts,.tsx,.js,.jsx\" --out-dir dist --copy-files",
+    "build": "npm run clean && npm run build:types && npm run build:js",
+    "check": "tsc --noEmit",
+    "dev:playground": "cd playground && npm run dev"
   },
   "browserslist": {
     "production": [
@@ -47,13 +56,27 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.10",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.16.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^5.0.0"
+    "@babel/cli": "^7.26.0",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  },
+  "homepage": "https://github.com/Claire-Lavigne/react-abc-modal#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "rimraf": "^6.1.0"
   }
 }
