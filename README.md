@@ -2,9 +2,11 @@
 
 A react modal as simple as ABC — lightweight, accessible, and fully customizable.  
 
-[![npm version](https://img.shields.io/npm/v/react-abc-modal?color=brightgreen)](https://www.npmjs.com/package/react-abc-modal)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![build](https://github.com/Claire-Lavigne/react-abc-modal/actions/workflows/release.yml/badge.svg)](https://github.com/Claire-Lavigne/react-abc-modal/actions)
+![npm version](https://img.shields.io/npm/v/react-abc-modal?color=darkgreen&style=flat-square)
+![npm downloads](https://img.shields.io/npm/dm/react-abc-modal?color=blueviolet&style=flat-square)
+![bundle size](https://img.shields.io/bundlephobia/minzip/react-abc-modal?color=ff69b4&style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-orange?style=flat-square)
+![CI & Release](https://img.shields.io/github/actions/workflow/status/Claire-Lavigne/react-abc-modal/publish.yml?label=CI%20%26%20Release&color=blue&style=flat-square)
 
 ## Features
 - Fully customizable via props and classes

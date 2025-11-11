@@ -1,6 +1,6 @@
 {
   "name": "react-abc-modal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "description": "A React modal as simple as ABC",
   "tags": [
@@ -37,7 +37,7 @@
     "url": "https://github.com/Claire-Lavigne/react-abc-modal/issues"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rm -rf dist",
     "build:types": "tsc --project tsconfig.json",
     "build:js": "babel src/lib --extensions \".ts,.tsx,.js,.jsx\" --out-dir dist --copy-files",
     "build": "npm run clean && npm run build:types && npm run build:js",
@@ -75,8 +75,5 @@
   "homepage": "https://github.com/Claire-Lavigne/react-abc-modal#readme",
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "rimraf": "^6.1.0"
   }
 }
